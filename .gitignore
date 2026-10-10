@@ -1,0 +1,19 @@
+# Configuration privée (mots de passe, clé secrète)
+.env
+
+# Python / Django
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+env/
+*.log
+db.sqlite3
+media/
+staticfiles/
+
+# Éditeurs / système
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
