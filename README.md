@@ -20,6 +20,18 @@
 
 ---
 
+## 📸 Aperçu
+
+![Page d'accueil](docs/captures/accueil.jpg)
+
+| Menu | Réservation |
+|:---:|:---:|
+| ![Carte du restaurant](docs/captures/menu.jpg) | ![Réservation de table](docs/captures/reservation.jpg) |
+| **Commande** | **Contact** |
+| ![Commande en ligne](docs/captures/commande.jpg) | ![Page de contact](docs/captures/contact.jpg) |
+
+---
+
 ## 🎯 Présentation
 
 **Le Palais des Délices** est un site pour un restaurant. Il permet aux clients de découvrir la carte, de **réserver une table**, de **passer commande** et de gérer leur compte.
