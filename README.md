@@ -123,10 +123,12 @@ python manage.py createsuperuser
 **5. Lancer l'API**
 
 ```bash
-python manage.py runserver
+python manage.py runserver 8001
 ```
 
-L'API est disponible sur http://127.0.0.1:8000/api/ et l'administration sur http://127.0.0.1:8000/admin/.
+L'API est disponible sur http://127.0.0.1:8001/api/ et l'administration sur http://127.0.0.1:8001/admin/.
+
+> Le site est configuré pour appeler l'API sur le port **8001** (fichier `frontend/js/api.js`, réglage `BASE_URL`).
 
 **6. Lancer le site**
 

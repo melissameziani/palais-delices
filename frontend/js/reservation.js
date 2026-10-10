@@ -153,7 +153,7 @@ async function fetchAvailableTables(date, time, guests) {
 async function createReservationAPI(reservationData) {
     try {
         // ✅ CORRECTION: Utiliser le bon endpoint et format
-        const response = await fetch('http://127.0.0.1:8000/api/restaurant/reservations/', {
+        const response = await fetch(API_CONFIG.BASE_URL + '/restaurant/reservations/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

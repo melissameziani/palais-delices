@@ -9,7 +9,7 @@
 // ========== CONFIGURATION GLOBALE ==========
 
 const API_CONFIG = {
-    BASE_URL: 'http://127.0.0.1:8000/api',
+    BASE_URL: 'http://127.0.0.1:8001/api', // port 8001 : laisse le 8000 libre pour d'autres projets
     TIMEOUT: 30000, // 30 secondes
     RETRY_ATTEMPTS: 3,
     
