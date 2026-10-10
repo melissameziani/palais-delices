@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width,
+        initial-scale=1">
+        <!-- google fonts --> 
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poetsen+One&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+        <!-- font awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!-- connect styleReservation.css -->
+        <link rel="stylesheet" href="styleReservation.css">
+        <title>Reservation Form</title>
+    </head>
+    <body>
+        <!-- Navigation (identique à index.html) -->
+        <div id="C">
+            <nav id="D">
+                <div class="nav-left">
+                    <h1><i class="fas fa-utensils"></i> Le Palais des Délices</h1>
+                </div>
+
+                <!-- Navigation desktop -->
+                <div class="nav-center">
+                    <ul>
+                        <li class="dropdown" onmouseenter="showAccueilDropdown()" onmouseleave="hideAccueilDropdown()">
+                            <a href="#" onclick="toggleAccueilDropdown(event)">Accueil ▾</a>
+                            <ul class="dropdown-menu" id="dropdown-accueil" style="display: none;">
+                                <li><a href="index.html#propos">À propos</a></li>
+                                <li><a href="index.html#evenement">Évènements</a></li>
+                                <li><a href="index.html#specialite">Spécialités</a></li>
+                                <li><a href="index.html#chef">Notre Équipe</a></li>                             
+                            </ul>
+                        </li>
+                        <li><a href="menu.html">Menu</a></li>
+                        <li class="dropdown" onmouseenter="showReservationDropdown()" onmouseleave="hideReservationDropdown()">
+                            <a href="#" onclick="toggleReservationDropdown(event)">Réservation ▾</a>
+                            <ul class="dropdown-menu" id="dropdown-reservation" style="display: none;">
+                                <li><a href="reservation.html">Table</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Menu Burger -->
+                <div class="burger-menu" onclick="toggleMobileMenu()">
+                    <div class="burger-line"></div>
+                    <div class="burger-line"></div>
+                    <div class="burger-line"></div>
+                </div>
+
+                <!-- Boutons d'authentification -->
+                <div class="auth-buttons">
+                    <a href="#" class="auth-btn login" onclick="openModal('login')">Connexion</a>
+                    <a href="#" class="auth-btn" onclick="openModal('register')">Inscription</a>
+                </div>
+            </nav>
+
+            <!-- Navigation mobile -->
+            <div id="mobile">
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="reservation.html">Réservation</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <section class = "banner">
+            <h2>RÉSERVEZ VOTRE TABLE MAINTENANT</h2>
+            <div class = "card-container">
+                <div class = "card-img">
+                    
+                </div>
+                <div class="card-content">
+                    <h3>Réservation</h3>
+                    <form id="reservationForm">
+                        <!-- Ligne 1 : Nom, Téléphone et Email -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="text" placeholder="Nom et prénom" id="fullName" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" placeholder="N° de tél." id="phoneNumber" required>
+                                <small id="phoneFeedback" class="feedback-message"></small>
+                            </div>
+                        </div>
+                    
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="email" placeholder="Adresse email" id="emailAddress" required>
+                                <small id="emailFeedback" class="feedback-message"></small>
+                            </div>
+                        </div>
+                    
+                    
+                    
+                        <!-- Ligne 2 : Date et Heure -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="date" id="reservationDate" required>
+                            </div>
+                            <div class="form-group time-group">
+                                <select id="startTime" required>
+                                    <option value="">Heure de début</option>
+                                    <!-- Options générées par JS -->
+                                </select>
+                                <select id="duration" required>
+                                    <option value="">Durée</option>
+                                    <option value="0.5">30 minutes</option>
+                                    <option value="1">1 heure</option>
+                                    <option value="2">2 heures</option>
+                                    <option value="3">3 heures</option>
+                                </select>
+                            </div>
+                        </div>
+                    
+                        <!-- Ligne 3 : Tables -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <select id="tablesSelect" multiple required></select>
+                                <p id="tableHint" style="display:none; color: #888; font-size: 0.9em;">
+                                    Veuillez d’abord sélectionner une date, une heure de début et une durée pour afficher les tables disponibles.
+                                </p>
+                                <p id="noTablesMessage" style="display:none; color: red; font-size: 0.9em;">
+                                    Aucune table n’est disponible pour ce créneau. Veuillez choisir un autre horaire.
+                                </p>
+                            </div>
+                        </div>
+                    
+                    
+                        <!-- Ligne 4 : Bouton -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="submit" value="RÉSERVER">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <div id="confirmationOverlay" class="overlay" style="display: none;">
+            <div class="confirmation-box">
+                <h2>✅ Merci !</h2>
+                <p id="confirmationText"></p>
+                <button onclick="closeConfirmation()">Fermer</button>
+            </div>
+        </div>
+        <div id="recapOverlay" class="overlay" style="display: none;">
+            <div class="confirmation-box">
+                <h2>📋 Veuillez confirmer votre réservation</h2>
+                <p id="recapText"></p>
+                <div style="margin-top: 20px;">
+                    <button id="confirmBtn">✅ Confirmer</button>
+                    <button onclick="closeRecap()">❌ Annuler</button>
+                </div>
+            </div>
+        </div>
+
+        <script src="js/api.js"></script>
+        <script src="js/reservation.js"></script>
+
+
+
+    </body>
+</html>

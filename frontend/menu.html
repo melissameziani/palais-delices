@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width,
+        initial-scale=1">
+        <!-- google fonts --> 
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poetsen+One&display=swap" rel="stylesheet">
+        <!-- font awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!-- connect style.css -->
+        <link rel="stylesheet" type="text/css" href="styleMenu.css">
+
+        <title>Menu</title>
+    </head>
+    <body>
+
+        <div id="C">
+            <nav id="D">
+                <!-- Logo à gauche -->
+                <div class="nav-left">
+                    <h1>Le Palais des Délices</h1>
+                    
+                    <!-- Navigation au centre (dans nav-left comme à l'origine) -->
+                    <div class="nav-center">
+                        <ul>
+                            <li class="dropdown" onmouseenter="showAccueilDropdown()" onmouseleave="hideAccueilDropdown()">
+                                <a href="index.html#accueil" onclick="toggleAccueilDropdown(event)">Accueil ▾</a>
+                                <ul class="dropdown-menu" id="dropdown-accueil" style="display: none;">
+                                    <li><a href="index.html#propos">À propos</a></li>
+                                    <li><a href="index.html#evenement">Évènements</a></li>
+                                    <li><a href="index.html#specialite">Spécialités</a></li>
+                                    <li><a href="index.html#chef">Notre Équipe</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="menu.html">Menu</a></li>
+                            <li class="dropdown" onmouseenter="showReservationDropdown()" onmouseleave="hideReservationDropdown()">
+                                <a href="#" onclick="toggleReservationDropdown(event)">Réservation ▾</a>
+                                <ul class="dropdown-menu" id="dropdown-reservation" style="display: none;">
+                                    <li><a href="reservation.html#reservationForm">Table</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Éléments à droite -->
+               
+
+                <!-- Panier -->
+                <div id="cart-icon">
+                    <button onclick="toggleCartModal()">
+                        Panier (<span id="cart-count">0</span>)
+                    </button>
+                </div>
+                <!-- Menu Burger (visible sur mobile) -->
+                <div class="burger-menu" onclick="toggleMobileMenu()">
+                    <div class="burger-line"></div>
+                    <div class="burger-line"></div>
+                    <div class="burger-line"></div>
+                </div>
+            </nav>
+
+            <!-- Navigation mobile -->
+            <div id="mobile">
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="reservation.html">Réservation</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Section Héro avec Vidéo -->
+        <div class="video-container">
+            <video autoplay muted loop>
+                <source src="backvideo.mp4" type="video/mp4" />
+            </video>
+            <div class="video-overlay"></div>
+            <div class="hero-content">
+                <h5>Le Palais des Délices</h5>
+                <h2 class="hero-title">Notre Menu</h2>
+                <p class="hero-description">
+                    Découvrez notre sélection de plats du jour
+                </p>
+                <a href="#specialite-jour">Découvrez le menu du jour</a>
+            </div>
+        </div>
+
+       <!-- Spécialités du Jour -->
+        <section id ="specialite-jour" class="todays-special">
+            <h2 class="todays-special-title">Nos Spécialités du Jour</h2>
+            <p class="todays-special-subtitle">Des créations fraîches préparées chaque matin par nos chefs</p>
+
+            <div class="todays-special-grid">
+                <!-- Plat 1 -->
+                <div class="todays-special-card">
+                    <div style="position: relative;">
+                        <img src="image/image42.webp" alt="Pasta aux tomates" class="todays-special-img">
+                        <span class="todays-special-badge">Du jour</span>
+                    </div>
+                    <div class="todays-special-details">
+                        <h3 class="todays-special-name">Pasta aux tomates cerise</h3>
+                        <p class="todays-special-price">1000 DA</p>
+                        <p class="todays-special-desc">Spaghettis cuits avec des tomates cerise, ail et basilic frais, le tout préparé en one pot.</p>
+                        <button class="commander" data-name="One pot pasta de spaghettis aux tomates cerise" data-price="1000">Commander</button>
+                    </div>
+                </div>
+
+                <!-- Plat 2 -->
+                <div class="todays-special-card">
+                    <div style="position: relative;">
+                        <img src="image/image23.webp" alt="Oeuf mimosa" class="todays-special-img">
+                        <span class="todays-special-badge">Du jour</span>
+                    </div>
+                    <div class="todays-special-details">
+                        <h3 class="todays-special-name">Oeuf mimosa au piment</h3>
+                        <p class="todays-special-price">900 DA</p>
+                        <p class="todays-special-desc">Oeufs durs évidés et farcis avec leur jaune mélangé à de la mayonnaise maison et du piment.</p>
+                        <button class="commander" data-name="Oeuf mimosa au piment de cayenne" data-price="900">Commander</button>
+                    </div>
+                </div>
+
+                <!-- Plat 3 -->
+                <div class="todays-special-card">
+                    <div style="position: relative;">
+                        <img src="image/image13.webp" alt="Confiture de coings" class="todays-special-img">
+                        <span class="todays-special-badge">Du jour</span>
+                    </div>
+                    <div class="todays-special-details">
+                        <h3 class="todays-special-name">Confiture de coings au miel</h3>
+                        <p class="todays-special-price">750 DA</p>
+                        <p class="todays-special-desc">Confiture maison préparée avec des coings frais et du miel de fleur d'oranger.</p>
+                        <button class="commander" data-name="Confiture de coings au miel" data-price="750">Commander</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+
+
+
+
+
+
+
+        <div id="Menu">
+            <h1 class="menu-title">Menu</h1>
+            <div id="E"> 
+                <div id="F">
+                    <h2 class="menu-subtitle">Entrées</h2>
+                
+                
+                 <div class="box">
+                        <div id="image">
+                            <img src="image/image18.webp">
+                        </div>
+                        <div>
+                            <h3> <P>Avocado toast
+                                <br> au saumon
+                            </P></h3>
+                            <h4>600DA</h4>
+                            <button class="commander" data-name="Avocado toast au saumon" data-price="600">Voir détails</button>
+
+                        </div>
+                        <br>
+                    
+                    
+                    
+                        <div id="image">
+                            <img src="image/image20.webp">
+                        </div>
+                        <div>
+                            <h3>Taboulé 
+                            <br>revisité</h3>
+                            <h4>500DA</h4>
+                            <button class="commander" data-name="Taboulé revisité" data-price="500">Voir détails</button>
+                        </div>
+                        <br>    
+                    
+                        <div id="image">
+                            <img src="image/image21.webp">
+                        </div>
+                        <div>
+                            <h3> <P>Salade de chou rouge,
+                                <br> pomme et carotte aux agrumes
+                            </P></h3>
+                            <h4>800DA</h4>
+                            <button class="commander" data-name="Salade de chou rouge, pomme et carotte aux agrumes" data-price="800">Voir détails</button>
+                        </div>
+                        <br>
+                    
+                    
+                        <div id="image">
+                            <img src="image/image22.webp">
+                        </div>
+                        <div>
+                            <h3> <P>Salade de mâche aux poires,
+                                <br> roquefort et noix
+                            </P></h3>
+                            <h4>1000DA</h4>
+                            <button class="commander" data-name="Salade de mâche aux poires, roquefort et noix" data-price="1000">Voir détails</button>
+                        </div>
+                        <br>    
+                    
+                    
+                        <div id="image">
+                            <img src="image/image23.webp">
+                        </div>
+                        <div>
+                            <h3> <P>Oeuf mimosa au piment
+                                <br> de cayenne
+                            </P></h3>
+                            <h4>900DA</h4>
+                            <button class="commander" data-name="Oeuf mimosa au piment de cayenne" data-price="900">Voir détails</button>
+                        </div>
+                        <br>
+                    
+
+                        <div id="image">
+                                <img src="image/image24.webp">
+                        </div>
+                         <div>
+                                <h3> <P>Salade de burrata
+                                    <br> aux tomates
+                                </P></h3>
+                                <h4>1200DA</h4>
+                                <button class="commander" data-name="Salade de burrata aux tomates" data-price="1200">Voir détails</button>
+                         </div>
+                         <br>
+                     
+                     
+                            <div id="image">
+                                <img src="image/image26.webp">
+                            </div>
+                            <div>
+                                <h3><P>Avocat au tartare de
+                                   <br> saumon au pamplemousse
+                                </P>
+                                </h3>
+                                <h4>1200DA</h4>
+                                <button class="commander" data-name="Avocat au tartare de saumon au pamplemousse" data-price="1200">Voir détails</button>
+                            </div>
+                           <br>
+                        
+                        
+                            <div id="image">
+                                <img src="image/image27.webp">
+                            </div>
+                            <div>
+                                <h3> <P>Millefeuille de betterave
+                                    <br> au fromage frais
+                                </P></h3>
+                                <h4>1000DA</h4>
+                                <button class="commander" data-name="Millefeuille de betterave au fromage frais" data-price="1000">Voir détails</button>
+                            </div>
+                            <br>
+                        
+                        
+                            <div id="image">
+                                <img src="image/image28.webp">
+                            </div>
+                            <div>
+                                <h3> <P>Pastèque détox à la
+                                    <br> feta et à la menthe
+                                </P></h3>
+                                <h4>800DA</h4>
+                                <button class="commander" data-name="Pastèque détox à la feta et à la menthe" data-price="800">Voir détails</button>
+                            </div>
+                            <br>
+                        
+                        
+                            <div id="image">
+                                <img src="image/image31.webp">
+                            </div>
+                            <div>
+                                <h3> <P>Crevettes marinées à
+                                    <br> l'ail et piment
+                                </P></h3>
+                                <h4>1100DA</h4>
+                                <button class="commander" data-name="Crevettes marinées à l'ail et piment" data-price="1100">Voir détails</button>
+                            </div>
+                        
+                    </div>
+
+                </div>
+                <div id="F">
+                    <h2 class="menu-subtitle">Plats Principaux</h2>
+                
+                    <div class="box">
+                        <div id="image">
+                            <img src="image/image36.webp">
+                        </div>
+                        <div>
+                            <h3> <P>Poêlée minceur de poulet au
+                                <br> curcuma et trois poivrons
+                            </P></h3>
+                            <h4>1200DA</h4>
+                            <button class="commander" data-name="Poêlée minceur de poulet au curcuma et trois poivrons" data-price="1200">Voir détails</button>
+                        </div>
+                        <br>
+                    
+                    
+                        <div id="image">
+                            <img src="image/image33.webp">
+                        </div>
+                        <div>
+                            <h3> <P>Poivrons farcis à la
+                                <br> semoule et petits légumes
+                            </P></h3>
+                            <h4>1000DA</h4>
+                            <button class="commander" data-name="Poivrons farcis à la semoule et petits légumes" data-price="1000">Voir détails</button>
+                        </div>
+                        <br>
+                    
+                    
+                        <div id="image">
+                            <img src="image/image34.webp">
+                        </div>
+                        <div>
+                            <h3> <P>Oeufs cocotte sur
+                                <br> lit d'épinards
+                            </P></h3>
+                            <h4>900DA</h4>
+                            <button class="commander" data-name="Oeufs cocotte sur lit d'épinards" data-price="900">Voir détails</button>
+                        </div>
+                        <br>
+                    
+                    
+                            <div id="image">
+                                <img src="image/image35.webp">
+                            </div>
+                            <div>
+                                <h3> <P>Linguines aux crevettes
+                                    <br> et au pesto de basilic
+                                </P></h3>
+                                <h4>1100DA</h4>
+                                <button class="commander" data-name="Linguines aux crevettes et au pesto de basilic" data-price="1100">Voir détails</button>
+                            </div>
+                        <br>
+                        
+                        
+                            <div id="image">
+                                <img src="image/image37.webp">
+                            </div>
+                            <div>
+                                <h3>Epinards à 
+                                <br>la florentine</h3>
+                                <h4>950DA</h4>
+                                <button class="commander" data-name="Epinards à la florentine" data-price="950">Voir détails</button>
+                            </div>
+                            <br>
+                        
+                        
+                        
+                            <div id="image">
+                                <img src="image/image38.webp">
+                            </div>
+                            <div>
+                                <h3> <P>Papillote de saumon
+                                    <br> au fenouil
+                                </P></h3>
+                                <h4>1300DA</h4>
+                                <button class="commander" data-name="Papillote de saumon au fenouil" data-price="1300">Voir détails</button>
+                            </div>
+                            <br>
+                        
+                        
+                        
+                        
+                            <div id="image">
+                                <img src="image/image42.webp">
+                            </div>
+                            <div>
+                                <h3> <P>One pot pasta de spaghettis
+                                    <br> aux tomates cerise
+                                </P></h3>
+                                <h4>1000DA</h4>
+                                <button class="commander" data-name="One pot pasta de spaghettis aux tomates cerise" data-price="1000">Voir détails</button>
+                            </div>
+                            <br>
+                        
+                        
+                        
+                            <div id="image">
+                                <img src="image/image40.webp">
+                            </div>
+                            <div>
+                                <h3> <P>One pot rice aux épinards
+                                    <br> et champignons
+                                </P></h3>
+                                <h4>1000DA</h4>
+                                <button class="commander" data-name="One pot rice aux épinards et champignons" data-price="1000">Voir détails</button>
+                            </div>
+                            <br>
+                        
+                        
+                        
+                            <div id="image">
+                                <img src="image/image41.webp">
+                            </div>
+                            <div>
+                                <h3>Bricks de chèvre
+                                <br> miel</h3>
+                                <h4>900DA</h4>
+                                <button class="commander" data-name="Bricks de chèvre miel" data-price="900">Voir détails</button>
+                            </div>
+                            <br>
+                        
+                        
+                        
+                            <div id="image">
+                                <img src="image/image43.webp">
+                            </div>
+                            <div>
+                                <h3> <P>Fajitas mexicaines revisitées
+                                    <br> à l'avocat et au thon
+                                </P></h3>
+                                <h4>1200DA</h4>
+                                <button class="commander" data-name="Fajitas mexicaines revisitées à l'avocat et au thon" data-price="1200">Voir détails</button>
+                            </div>
+                        
+                    </div>
+
+                </div>
+                <div id="F">
+                    <h2 class="menu-subtitle">Desserts</h2>
+                
+                
+                    <div class="box">
+                        <div id="image">
+                            <img src="image/image5.webp">
+                        </div>
+                        <div>
+                            <h3> <P>Compote de pommes
+                                <br>vitalité
+                            </P></h3>
+                            <h4>700DA</h4>
+                            <button class="commander" data-name="Compote de pommes vitalité" data-price="700">Voir détails</button>
+                        </div>
+                        <br>
+                    
+                    
+                    
+                        <div id="image">
+                            <img src="image/image10.webp">
+                        </div>
+                        <div>
+                            <h3>Scones aux 
+                            <br>pommes</h3>
+                            <h4>600DA</h4>
+                            <button class="commander" data-name="Scones aux pommes" data-price="600">Voir détails</button>
+                        </div>
+                        <br>
+                    
+                    
+                    
+                        <div id="image">
+                            <img src="image/image6.webp">
+                        </div>
+                        <div>
+                            <h3> <P>Salade d’oranges
+                                <br> aux dattes
+                            </P></h3>
+                            <h4>650DA</h4>
+                            <button class="commander" data-name="Salade d’oranges aux dattes" data-price="650">Voir détails</button>
+                        </div>
+                        <br>
+                    
+                    
+                    
+                        <div id="image">
+                            <img src="image/image12.webp">
+                        </div>
+                        <div>
+                            <h3>Granola 
+                            <br>maison</h3>
+                            <h4>800DA</h4>
+                            <button class="commander" data-name="Granola maison" data-price="800">Voir détails</button>
+                        </div>
+                        <br>
+                    
+                    
+                    
+                        <div id="image">
+                            <img src="image/image9.webp">
+                        </div>
+                        <div>
+                            <h3> <P>Compote de pêches au beurre
+                                <br> salé et aux amandes
+                            </P></h3>
+                            <h4>900DA</h4>
+                            <button class="commander" data-name="Compote de pêches au beurre salé et aux amandes" data-price="900">Voir détails</button>
+                        </div>
+                        <br>
+                    
+
+                            <div id="image">
+                                <img src="image/image11.webp">
+                            </div>
+                            <div>
+                                <h3> <P> Gaspacho dessert
+                                    <br> à l'ananas
+                                </P></h3>
+                                <h4>600DA</h4>
+                                <button class="commander" data-name="Gaspacho dessert à l'ananas" data-price="600">Voir détails</button>
+                            </div>
+                            <br>
+                        
+                        
+                        
+                            <div id="image">
+                                <img src="image/image17.webp">
+                            </div>
+                            <div>
+                                <h3>Yaourt coco
+                                <br>mûres</h3>
+                                <h4>900DA</h4>
+                                <button class="commander" data-name="Yaourt coco mûres" data-price="900">Voir détails</button>
+                            </div>
+                            <br>
+                        
+                        
+                        
+                            <div id="image">
+                                <img src="image/image4.webp">
+                            </div>
+                            <div>
+                                <h3> <P>Porridge de quinoa
+                                    <br> à la banane
+                                </P></h3>
+                                <h4>1000DA</h4>
+                                <button class="commander" data-name="Porridge de quinoa à la banane" data-price="1000">Voir détails</button>
+                            </div>
+                            <br>
+                        
+                        
+                        
+                            <div id="image">
+                                <img src="image/image13.webp">
+                        </div>
+                        <div>
+                            <h3> <P>Confiture de coings
+                                <br> au miel
+                            </P></h3>
+                            <h4>750DA</h4>
+                            <button class="commander" data-name="Confiture de coings au miel" data-price="750">Voir détails</button>
+                        </div>
+                        <br>
+                        
+                        
+                        
+                        <div id="image">
+                            <img src="image/image16.webp">
+                        </div>
+                        <div>
+                            <h3> <P>Yaourts gelés aux
+                                <br> fruits
+                            </P></h3>
+                            <h4>600DA</h4>
+                            <button class="commander" data-name="Yaourts gelés aux fruits" data-price="600">Voir détails</button>
+                        </div>
+                  </div>
+
+                </div>
+            </div>
+        </div>
+    
+           <!-- Start Footer -->
+        <footer>
+    
+            <div class="mu-footer-area"> <!-- Div pour la zone du footer -->
+                <!-- Div pour les icônes sociales -->
+                <div class="mu-footer-social">
+                    <a href="#"><span class="fa fa-facebook"></span></a> <!-- Icône Facebook -->
+                    <a href="#"><span class="fa fa-twitter"></span></a> <!-- Icône Twitter -->
+                    <a href="#"><span class="fa fa-google-plus"></span></a> <!-- Icône Google+ -->
+                    <a href="#"><span class="fa fa-linkedin"></span></a> <!-- Icône LinkedIn -->
+                    <a href="#"><span class="fa fa-youtube"></span></a> <!-- Icône YouTube -->
+                </div>
+                <!-- Fin de la zone des icônes sociales -->
+            
+                <!-- Div pour le texte de droit d'auteur -->
+                <div class="mu-footer-copyright">
+                    <p>&#9400; Copyright 2019 Restaurant Le Palais des Délices</p> <!-- Texte de droit d'auteur -->
+
+                </div>
+                <!-- Fin de la zone du texte de droit d'auteur -->
+            </div>
+
+        </footer>
+        <!-- End Footer -->
+
+
+        <!-- PANIER -->
+        <div id="cart-modal" class="modal">
+            <div class="modal-content">
+              <span class="close" onclick="toggleCartModal()">&times;</span>
+              <h2>Votre Panier</h2>
+              <ul id="cart-items"></ul>
+              <h3>Total: <span id="cart-total">0 DA</span></h3>
+            
+              <div class="cart-buttons">
+                <button onclick="clearCart()">🧹 Vider le panier</button>
+                <a href="commande.html" class="commander-btn" onclick="prepareCheckout()">🛒 Commander</a>
+              </div>
+            </div>
+        </div>
+
+        <!-- MODAL DÉTAILS PLAT -->
+        <div id="dish-modal" class="modal">
+          <div class="modal-content dish-layout">
+            <img id="modal-dish-img" class="dish-img" src="" alt="" style="width: 45%; border-radius: 10px; object-fit: cover; box-shadow: 0 4px 12px rgba(0,0,0,0.2);">
+            <div class="dish-details" style="flex: 1;">
+              <span class="close" onclick="closeDishModal()">&times;</span>
+              <h2 id="modal-dish-name" style="color: #d35400; font-size: 1.8rem; margin-bottom: 10px;"></h2>
+              <p id="modal-dish-description" style="font-size: 1rem; color: #333; line-height: 1.5; margin-bottom: 8px;"></p>
+              <ul id="modal-dish-ingredients" class="dish-ingredients"></ul>
+              <p style="font-size: 1.1rem; font-weight: bold; color: #2c3e50;">Prix: <span id="modal-dish-price"></span> DA</p>
+              <label for="dish-qty">Quantité :</label>
+              <input type="number" id="dish-qty" value="1" min="1" style="width: 60px; margin-left: 10px; margin-bottom: 10px; padding: 4px 6px;">
+              <br>
+              <button onclick="addModalDishToCart()" style="background-color: #e67e22; border: none; padding: 10px 20px; border-radius: 8px; color: white; font-weight: bold; cursor: pointer;">Ajouter au panier</button>
+            </div>
+          </div>
+        </div>
+        <script src="js/api.js"></script>
+        <script src="menu.js"></script>
+    </body>
+</html>

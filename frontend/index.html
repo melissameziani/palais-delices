@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>  
+    <head>
+                <meta charset="UTF-8" />
+                <meta name="viewport" content="width=device-width,
+                initial-scale=1">
+                <!-- google fonts -->
+                <link rel="preconnect" href="https://fonts.googleapis.com">
+                <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+                <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poetsen+One&display=swap" rel="stylesheet">
+                <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+                <!-- font awesome -->
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+                <!-- connect style.css -->
+                <link rel="stylesheet" type="text/css" href="style.css">
+                <title>Le Palais des Délices</title>
+    </head>
+    <body>
+        <div id="A">
+            <div class="carousel-container">
+                <!-- Slide 1 - Accueil principal -->
+                <div class="carousel-slide slide1 active">
+                    <div class="slide-content">
+                        <h1>Le Palais des Délices</h1>
+                        <h2>Une cuisine généreuse et gourmande</h2>
+                        <a href="menu.html#E">Commandez maintenant !</a>
+                    </div>
+                </div>
+            
+                <!-- Slide 2 - Nos Menus -->
+                <div class="carousel-slide slide2">
+                    <div class="slide-content">
+                        <h1>Nos Menus</h1>
+                        <h2>Des saveurs authentiques qui éveillent vos sens</h2>
+                        <a href="menu.html">Découvrir nos plats</a>
+                    </div>
+                </div>
+            
+                <!-- Slide 3 - Menu du jour -->
+                <div class="carousel-slide slide3">
+                    <div class="slide-content">
+                        <h1>Menu du Jour</h1>
+                        <h2>Des créations fraîches préparées chaque matin</h2>
+                        <a href="menu.html">Découvrir plus</a>
+                    </div>
+                </div>
+            
+                <!-- Navigation avec flèches -->
+                <button class="carousel-nav prev" onclick="changeSlide(-1)">❮</button>
+                <button class="carousel-nav next" onclick="changeSlide(1)">❯</button>
+            
+                <!-- Points de navigation -->
+                <div class="carousel-dots">
+                    <span class="dot active" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                </div>
+            </div>
+        </div>
+            
+        <div id="C">
+            <nav id="D">
+                <div class="nav-left">
+                    <h1><i class="fas fa-utensils"></i> Le Palais des Délices</h1>
+                </div>
+                
+                <!-- Navigation desktop (cachée sur mobile) -->
+                <div class="nav-center">
+                    <ul>
+                        <li class="dropdown" onmouseenter="showAccueilDropdown()" onmouseleave="hideAccueilDropdown()">
+                            <a href="#" onclick="toggleAccueilDropdown(event)">Accueil ▾</a>
+                            <ul class="dropdown-menu" id="dropdown-accueil" style="display: none;">
+                                <li><a href="#propos">À propos </a></li>
+                                <li><a href="#evenement">Évènements</a></li>
+                                <li><a href="#specialite">Spécialités</a></li>
+                                <li><a href="#chef">Notre Équipe</a></li>                             
+                            </ul>
+                        </li>
+                        <li><a href="menu.html">Menu</a></li>
+                        <li class="dropdown" onmouseenter="showReservationDropdown()" onmouseleave="hideReservationDropdown()">
+                            <a href="#" onclick="toggleReservationDropdown(event)">Réservation ▾</a>
+                            <ul class="dropdown-menu" id="dropdown-reservation" style="display: none;">
+                                <li><a href="reservation.html">Table</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="contact.html">Contactez nous</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Menu Burger (visible sur mobile) -->
+                <div class="burger-menu" onclick="toggleMobileMenu()">
+                    <div class="burger-line"></div>
+                    <div class="burger-line"></div>
+                    <div class="burger-line"></div>
+                </div>
+                
+                <!-- Boutons d'authentification (toujours visibles) -->
+                <div class="auth-buttons">
+                    <a href="#" class="auth-btn login" onclick="openModal('login')">Connexion</a>
+                    <a href="#" class="auth-btn" onclick="openModal('register')">Inscription</a>
+                </div>
+            </nav>
+            
+            <!-- Navigation mobile -->
+            <div id="mobile">
+                <ul>
+                    <li><a href="#A">Accueil</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="reservation.html">Réservation</a></li>
+                    <li><a href="#propos">À propos</a></li>
+                    <li><a href="#evenement">Évènements</a></li>
+                    <li><a href="#specialite">Spécialités</a></li>
+                    <li><a href="#chef">Chef</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div> 
+        </div>
+            
+        <!-- Modal d'authentification -->
+        <div id="authModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <div class="auth-container">
+                    <div class="auth-header">
+                        <h1>Bienvenue</h1>
+                        <p>Rejoignez-nous pour une expérience culinaire unique</p>
+                    </div>
+                
+                    <div class="form-tabs">
+                        <button class="tab-btn active" onclick="switchTab('login')">Connexion</button>
+                        <button class="tab-btn" onclick="switchTab('register')">Inscription</button>
+                    </div>
+                
+                    <div id="message" class="message"></div>
+                
+                    <!-- Formulaire de connexion -->
+                    <div id="loginForm" class="form-content active">
+                        <form onsubmit="handleLogin(event)">
+                            <div class="form-group">
+                                <label for="loginEmail">Email <span class="required">*</span></label>
+                                <input type="email" id="loginEmail" name="email" required>
+                                <div class="error-message">Email requis</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="loginPassword">Mot de passe <span class="required">*</span></label>
+                                <input type="password" id="loginPassword" name="password" required>
+                                <div class="error-message">Mot de passe requis</div>
+                            </div>
+                            <button type="submit" class="submit-btn">Se connecter</button>
+                        </form>
+                    </div>
+                
+                    <!-- Formulaire d'inscription -->
+                    <div id="registerForm" class="form-content">
+                        <form onsubmit="handleRegister(event)">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="nom">Nom <span class="required">*</span></label>
+                                    <input type="text" id="nom" name="nom" required>
+                                    <div class="error-message">Nom requis</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="prenom">Prénom <span class="required">*</span></label>
+                                    <input type="text" id="prenom" name="prenom" required>
+                                    <div class="error-message">Prénom requis</div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="dateNaissance">Date de naissance <span class="required">*</span></label>
+                                <input type="date" id="dateNaissance" name="dateNaissance" required>
+                                <div class="error-message">Date de naissance requise</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email <span class="required">*</span></label>
+                                <input type="email" id="email" name="email" required>
+                                <div class="error-message">Email valide requis</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="telephone">Numéro de téléphone <span class="required">*</span></label>
+                                <input type="tel" id="telephone" name="telephone" required placeholder="0673779340 ou +213673779340">
+                                <div class="error-message">Numéro de téléphone requis</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Mot de passe <span class="required">*</span></label>
+                                <input type="password" id="password" name="password" required oninput="checkPasswordStrength()">
+                                <div class="password-strength">
+                                    <div class="strength-bar">
+                                        <div class="strength-fill" id="strengthFill"></div>
+                                    </div>
+                                    <div class="strength-text" id="strengthText">Minimum 8 caractères, majuscule, chiffre et caractère spécial</div>
+                                </div>
+                                <div class="error-message">Mot de passe requis</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="confirmPassword">Confirmer le mot de passe <span class="required">*</span></label>
+                                <input type="password" id="confirmPassword" name="confirmPassword" required oninput="checkPasswordMatch()">
+                                <div class="error-message">Confirmation de mot de passe requise</div>
+                            </div>
+                            <button type="submit" class="submit-btn" id="registerBtn">S'inscrire</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Section Menu du Jour -->
+        <div class="daily-menu-section">
+            <h2 class="daily-menu-title">Menu du Jour</h2>
+            <p class="daily-menu-subtitle">Découvrez nos spécialités préparées quotidiennement avec des ingrédients frais</p>
+            
+            <div class="daily-menu-container">
+                <!-- Plat 1 -->
+                <div class="daily-menu-item">
+                    <img src="image/image36.webp" alt="Poêlée de poulet" class="daily-menu-img">
+                    <div class="daily-menu-content">
+                        <h3 class="daily-menu-dish">Poêlée de poulet au curcuma</h3>
+                        <p class="daily-menu-price">1200 DA</p>
+                        <p class="daily-menu-desc">Poulet mariné avec du curcuma et trois poivrons, accompagné de riz basmati.</p>
+                        <a href="menu.html#E" class="daily-menu-link">Voir le menu complet</a>
+                    </div>
+                </div>
+                
+                <!-- Plat 2 -->
+                <div class="daily-menu-item">
+                    <img src="image/image38.webp" alt="Papillote de saumon" class="daily-menu-img">
+                    <div class="daily-menu-content">
+                        <h3 class="daily-menu-dish">Papillote de saumon au fenouil</h3>
+                        <p class="daily-menu-price">1300 DA</p>
+                        <p class="daily-menu-desc">Saumon frais cuit en papillote avec fenouil et citron, servi avec des légumes de saison.</p>
+                        <a href="menu.html#E" class="daily-menu-link">Voir le menu complet</a>
+                    </div>
+                </div>
+                
+                <!-- Plat 3 -->
+                <div class="daily-menu-item">
+                    <img src="image/image16.webp" alt="Yaourts gelés" class="daily-menu-img">
+                    <div class="daily-menu-content">
+                        <h3 class="daily-menu-dish">Yaourts gelés aux fruits</h3>
+                        <p class="daily-menu-price">600 DA</p>
+                        <p class="daily-menu-desc">Yaourt maison glacé avec des fruits de saison et un coulis de fruits rouges.</p>
+                        <a href="menu.html#E" class="daily-menu-link">Voir le menu complet</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Sections du site -->
+        <div id="propos">
+            <h1 id="section">À propos</h1>
+            <div id="I">
+               <div class="J">
+                <h2>À propos de nous</h2>
+                <p>    
+                    Le Palais des Délices est un restaurant de renom situé dans le Val d'Hydra, réputé pour sa fusion de tradition et innovation ainsi que son engagement envers la qualité et la durabilité. En collaboration avec des producteurs locaux, le restaurant garantit des ingrédients frais, tandis que ses chefs talentueux créent des plats qui enchantent les sens. Adapté à diverses occasions, du déjeuner d'affaires au dîner romantique, il offre une expérience culinaire mémorable, célébrant les plaisirs simples de la table dans une ambiance chaleureuse et un service exemplaire.
+                </p>
+               </div>
+               <div class="J">
+                  <div id="proposimg">
+                    <img src="image/image81.avif" alt="Restaurant intérieur">   
+                  </div>
+               </div>
+            </div>
+        </div>
+    
+        <div id="evenement">
+            <h1 id="section">Évènements</h1>
+            <div id="I">
+               <div class="J">
+                    <h2>Pour vos évènements</h2>
+                    <p>   
+                        Au Palais des Délices, les événements spéciaux sont traités avec une attention particulière pour créer des moments inoubliables. Le restaurant offre un cadre idéal pour une variété d'occasions, des célébrations familiales aux réceptions d'entreprise. Avec des installations élégantes et une équipe dédiée à l'organisation impeccable, chaque événement est personnalisé pour répondre aux désirs spécifiques des clients.
+                    </p>
+               </div>
+               <div class="J">
+                  <div id="proposimg">
+                    <img src="image/image80.avif" alt="Événement restaurant">   
+                  </div>
+               </div>
+            </div>
+        </div>
+    
+        <div id="specialite">
+            <h1 id="section">Spécialités</h1>
+            <div id="I">
+               <div class="J">
+                <h2>Voici nos Spécialités</h2>
+                <p>   
+                    Le Palais des Délices excelle dans la préparation de spécialités maritimes, mettant en avant des plats élaborés à partir de poissons et de fruits de mer frais. Les chefs y transforment le poisson en créations gastronomiques, allant de plats simples et raffinés à des recettes innovantes. Les amateurs de viandes ne sont pas en reste, avec des plats de veau soigneusement préparés.
+                </p>
+               </div>
+               <div class="J">
+                  <div id="proposimg">
+                    <img src="image/image79.jpg" alt="Spécialités culinaires">   
+                  </div>
+               </div>
+            </div>
+        </div>
+    
+        <div id="chef">
+           <h1 id="section">Notre Équipe</h1>
+           <div id="G">
+                <div class="H">
+                    <div id="img">
+                         <img src="image/image58.jpg" alt="Chef Amir">
+                    </div>
+                    <h4>Chef Amir</h4>
+                </div>
+                <div class="H">
+                    <div id="img">
+                         <img src="image/image60.jpg" alt="Chef Ines">
+                    </div>
+                    <h4>Chef Ines</h4>
+                </div>
+                <div class="H">
+                    <div id="img">
+                         <img src="image/image64.jpg" alt="Chef Mohammed">
+                    </div>
+                    <h4>Chef Mohammed</h4>
+                </div>
+                <div class="H">
+                    <div id="img">
+                         <img src="image/image66.jpg" alt="Chef Melissa">
+                    </div>
+                    <h4>Chef Melissa</h4>
+                </div>
+           </div>
+        </div>
+            
+        <!-- Start Footer -->
+<footer>
+    <div class="mu-footer-area"> <!-- Div pour la zone du footer -->
+        <!-- Div pour les icônes sociales -->
+        <div class="mu-footer-social">
+            <a href="#"><span class="fa fa-facebook"></span></a> <!-- Icône Facebook -->
+            <a href="#"><span class="fa fa-twitter"></span></a> <!-- Icône Twitter -->
+            <a href="#"><span class="fa fa-google-plus"></span></a> <!-- Icône Google+ -->
+            <a href="#"><span class="fa fa-linkedin"></span></a> <!-- Icône LinkedIn -->
+            <a href="#"><span class="fa fa-youtube"></span></a> <!-- Icône YouTube -->
+        </div>
+        <!-- Fin de la zone des icônes sociales -->
+    
+        <!-- Div pour le texte de droit d'auteur -->
+        <div class="mu-footer-copyright">
+            <p>&#9400; Copyright 2019 Restaurant Le Palais des Délices</p> <!-- Texte de droit d'auteur -->
+        </div>
+        <!-- Fin de la zone du texte de droit d'auteur -->
+    </div>
+</footer>
+<!-- End Footer -->
+        <script src="js/api.js"></script>
+        <script src="js/index.js"></script>
+    </body>
+</html>
+
+
